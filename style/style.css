@@ -446,7 +446,8 @@ font-size: 20px;
   height: 100%;
 }
 .card-projects{
- min-width: 300px;
+ min-width: 280px;
+ max-width: 320px;
     height: 330px;
     width: 22vw;
     background: #28293d;
@@ -520,9 +521,7 @@ font-size: 20px;
 .fixed-controls{
   right: 5px;
 }
-  .swiper-pagination{
-    right: 20px;
-  }
+
   .contact-frame{
     display: block;
   }
@@ -580,7 +579,13 @@ font-size: 20px;
     height: 190px;
   }
   .input-text{
-    min-height: 100px;
+    min-height: 70px;
+  }
+  .swiper2 {
+    max-height: 400px;
+  }
+  .toolbar-text {
+    transform: translateX(-16px);
   }
 }
 
