@@ -141,7 +141,7 @@ nav .menu-btn i{
     height: 100px;
     width: 36px;
     border-radius: 50px;
-    z-index: 12;
+    z-index: 2;
     }
     .up{
       opacity: 0.2;
