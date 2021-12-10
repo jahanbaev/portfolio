@@ -15,7 +15,7 @@
    <nav class="nav toolbar" id ="navbar">
       <div class="logo"><section class="toolbar-text">J<p>ahanbaev </p>S</section></div>
 
-      <img onclick="nav()" class="nav-icon" src="nav.png">
+      <img onclick="nav()" class="nav-icon" src="images/nav.png">
       <label for="click" class="menu-btn">
         <i class="fas fa-bars"></i>
       </label>
@@ -28,8 +28,8 @@
     
 </nav>
 <div class="fixed-controls">
-  <img src="up.png" class="up" onclick="slider(0)">
-  <img src="up.png" class="down" onclick="slider(1)">
+  <img src="images/up.png" class="up" onclick="slider(0)">
+  <img src="images/up.png" class="down" onclick="slider(1)">
 </div>
 <div class="swiper mySwiper swiper-initialized swiper-vertical swiper-pointer-events">
       <div class="swiper-wrapper">
@@ -80,7 +80,7 @@
             </div>
             <li class="line"></li>
             <p>experience:2 years</p>
-            <p>level: BAM, SASS, SCCS</p>
+            <p>level: BEM, SASS, SCCS</p>
           </div>
         </div>
         <div class="swiper-slide s-slide">
@@ -142,9 +142,9 @@
            <div class="contact-frame">
             <div class="contact-blocks socials">
               <p class="title-contact">social networks</p>
-              <p class="social-text"><a class="a" href="https://t.me/jahanbaev"><img src="telegram.png" class="icons-social"> telegram</a></p>
-              <p class="social-text"><a class="a" href="https://t.me/jahanbaev"><img src="pinterest.png" class="icons-social"> pinterest</a></p>
-              <p class="social-text"><a class="a" href="https://instagram.com/jahanbaev"><img src="instagram.png" class="icons-social"> instagram</a></p>
+              <p class="social-text"><a class="a" href="https://t.me/jahanbaev"><img src="images/telegram.png" class="icons-social"> telegram</a></p>
+              <p class="social-text"><a class="a" href="https://t.me/jahanbaev"><img src="images/pinterest.png" class="icons-social"> pinterest</a></p>
+              <p class="social-text"><a class="a" href="https://instagram.com/jahanbaev"><img src="images/instagram.png" class="icons-social"> instagram</a></p>
             </div>
             <div class="contact-blocks">
               <p class="title-contact">Contact form</p>
@@ -164,104 +164,117 @@
      
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-      var swiper = new Swiper(".mySwiper", {
-        direction: "vertical",
-        slidesPerView: 1,
-        mousewheel: true,
-        speed:600
-      });
-
-
-swiper.on('slideChangeTransitionStart', function () {
-if (swiper.activeIndex == 0) {
-  document.getElementsByClassName("up")[0].style = "opacity:0.2"
-}else{
-   document.getElementsByClassName("up")[0].style = "opacity:1"
-}
-if (swiper.activeIndex == 3) {
-  document.getElementsByClassName("down")[0].style = "opacity:0.2"
-}else{
-   document.getElementsByClassName("down")[0].style = "opacity:1"
-}
-
-  opCl = true;
-  document.getElementById("anim2").style="left: -100%;";
-   var elem =  document.getElementsByClassName("swiper-slide-active")[0];
-  if(elem == null){
-document.getElementsByClassName('toolbar')[0].style = "opacity:0"
-  }
-
-  if(elem != null){
-    if(elem.className.includes("intro-bg") == false){
-document.getElementsByClassName('toolbar')[0].style = "height:55px; background:#28293d"
- }else{
-  document.getElementsByClassName('toolbar')[0].style = "opacity:1";
-   document.getElementsByClassName('toolbar')[0].style = "height:100px; background:none"
- } }else{
-  document.getElementsByClassName('toolbar')[0].style = "opacity:1";
-    document.getElementsByClassName('toolbar')[0].style = "height:100px; background:none"
-  }
+    let swiper = new Swiper(".mySwiper", {
+    direction: "vertical",
+    slidesPerView: 1,
+    mousewheel: true,
+    speed: 600
 });
-swiper.on('slideChangeTransitionEnd', function () {
-  var elem =  document.getElementsByClassName("swiper-slide-active")[0];
-  
-
-   check(swiper.activeIndex)
-});
-function check(pos) {
-  swiper.slideTo(pos);
-  document.getElementsByClassName("active")[0].classList.remove("active");
-  document.getElementsByClassName("triple")[pos].classList.add("active")
-}
-      var swiper2 = new Swiper(".mySwiper2", {
-         effect: "coverflow",
-         loop:true,
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }
-      });
 
 
-      //script for navbar
+swiper.on('slideChangeTransitionStart', function() {
+    if (swiper.activeIndex == 0) {
+        document.getElementsByClassName("up")[0].style = "opacity:0.2"
+    } else {
+        document.getElementsByClassName("up")[0].style = "opacity:1"
+    }
+    if (swiper.activeIndex == 3) {
+        document.getElementsByClassName("down")[0].style = "opacity:0.2"
+    } else {
+        document.getElementsByClassName("down")[0].style = "opacity:1"
+    }
 
-var opCl = true;
-      function nav() {
-        if (opCl) {
-          if (swiper.activeIndex == 0) {
-            document.getElementsByClassName('toolbar')[0].style = "height:55px; background:#1c1b1b"
-          }
-          document.getElementById("anim2").style="left: 0px";
-          opCl = false
-        }else{
-          if (swiper.activeIndex == 0) {
+    opCl = true;
+    document.getElementById("anim2").style = "left: -100%;";
+    let elem = document.getElementsByClassName("swiper-slide-active")[0];
+    if (elem == null) {
+        document.getElementsByClassName('toolbar')[0].style = "opacity:0"
+    }
+
+    if (elem != null) {
+        if (elem.className.includes("intro-bg") == false) {
+            document.getElementsByClassName('toolbar')[0].style = "height:55px; background:#28293d"
+        } else {
             document.getElementsByClassName('toolbar')[0].style = "opacity:1";
-   document.getElementsByClassName('toolbar')[0].style = "height:100px; background:none"
-          }
-          document.getElementById("anim2").style="left: -100%"
-          opCl = true
+            document.getElementsByClassName('toolbar')[0].style = "height:100px; background:none"
         }
-      }
-function slider(nxt) {
-   if (nxt == 0) {
-          swiper.slidePrev();
-        }else{
-          swiper.slideNext();
-        }
+    } else {
+        document.getElementsByClassName('toolbar')[0].style = "opacity:1";
+        document.getElementsByClassName('toolbar')[0].style = "height:100px; background:none"
+    }
+});
+swiper.on('slideChangeTransitionEnd', function() {
+    let elem = document.getElementsByClassName("swiper-slide-active")[0];
+
+
+    check(swiper.activeIndex)
+});
+
+function check(pos) {
+    swiper.slideTo(pos);
+    document.getElementsByClassName("active")[0].classList.remove("active");
+    document.getElementsByClassName("triple")[pos].classList.add("active")
 }
-      function slide(nxt){
-        if (nxt == 0) {
-          swiper2.slidePrev();
-        }else{
-          swiper2.slideNext();
+let swiper2 = new Swiper(".mySwiper2", {
+    effect: "coverflow",
+    loop: true,
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+    }
+});
+
+
+//script for navbar
+
+let opCl = true;
+const nav = () => {
+    if (opCl) {
+        if (swiper.activeIndex == 0) {
+            document.getElementsByClassName('toolbar')[0].style = "height:55px; background:#1c1b1b"
         }
-      }
+        document.getElementById("anim2").style = "left: 0px";
+        opCl = false
+    } else {
+        if (swiper.activeIndex == 0) {
+            document.getElementsByClassName('toolbar')[0].style = "opacity:1";
+            document.getElementsByClassName('toolbar')[0].style = "height:100px; background:none"
+        }
+        document.getElementById("anim2").style = "left: -100%"
+        opCl = true
+    }
+}
+const slider = (nxt) => {
+    if (nxt == 0) {
+        swiper.slidePrev();
+    } else {
+        swiper.slideNext();
+    }
+}
+const slide = (nxt) => {
+    if (nxt == 0) {
+        swiper2.slidePrev();
+    } else {
+        swiper2.slideNext();
+    }
+}
+
+
+//get request
+https://api.telegram.org/bot1872875916:AAFZoVul7V-yihUB5esqIOsPFdcbVvXpELM/sendMessage?chat_id=1329000291&text=hello
+
+const sendMassage = (name, message) =>{
+  var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "https://api.telegram.org/bot1872875916:AAFZoVul7V-yihUB5esqIOsPFdcbVvXpELM/sendMessage?chat_id=1329000291&text="+name+", "+ message , false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
     </script>
 
 
