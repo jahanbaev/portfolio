@@ -210,7 +210,7 @@ swiper.on('slideChangeTransitionEnd', function() {
     check(swiper.activeIndex)
 });
 
-function check(pos) {
+const check = (pos) => {
     swiper.slideTo(pos);
     document.getElementsByClassName("active")[0].classList.remove("active");
     document.getElementsByClassName("triple")[pos].classList.add("active")
@@ -265,16 +265,20 @@ const slide = (nxt) => {
     }
 }
 
+const sendMassage = () =>{
+  let name = document.getElementsByName("name")[0].value;
+  let message = document.getElementsByName("message")[0].value;
 
-//get request
-https://api.telegram.org/bot1872875916:AAFZoVul7V-yihUB5esqIOsPFdcbVvXpELM/sendMessage?chat_id=1329000291&text=hello
-
-const sendMassage = (name, message) =>{
-  var xmlHttp = new XMLHttpRequest();
+  let xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", "https://api.telegram.org/bot1872875916:AAFZoVul7V-yihUB5esqIOsPFdcbVvXpELM/sendMessage?chat_id=1329000291&text="+name+", "+ message , false ); // false for synchronous request
     xmlHttp.send( null );
-    return xmlHttp.responseText;
+    document.getElementsByName("name")[0].value = "";
+  document.getElementsByName("message")[0].value  = "";
+    alert("thanks to message, we will read this text and respond to you")
 }
+
+sendMassage()
+
     </script>
 
 
