@@ -235,52 +235,7 @@ let swiper2 = new Swiper(".mySwiper2", {
 
 
 //script for navbar
-
-let opCl = true;
-const nav = () => {
-    if (opCl) {
-        if (swiper.activeIndex == 0) {
-            document.getElementsByClassName('toolbar')[0].style = "height:55px; background:#1c1b1b"
-        }
-        document.getElementById("anim2").style = "left: 0px";
-        opCl = false
-    } else {
-        if (swiper.activeIndex == 0) {
-            document.getElementsByClassName('toolbar')[0].style = "opacity:1";
-            document.getElementsByClassName('toolbar')[0].style = "height:100px; background:none"
-        }
-        document.getElementById("anim2").style = "left: -100%"
-        opCl = true
-    }
-}
-const slider = (nxt) => {
-    if (nxt == 0) {
-        swiper.slidePrev();
-    } else {
-        swiper.slideNext();
-    }
-}
-const slide = (nxt) => {
-    if (nxt == 0) {
-        swiper2.slidePrev();
-    } else {
-        swiper2.slideNext();
-    }
-}
-
-
-//get request
-const sendMassage = () =>{
-  let name = document.getElementsByName("name")[0].value;
-  let message = document.getElementsByName("message")[0].value;
-
-  var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "https://api.telegram.org/bot1872875916:AAFZoVul7V-yihUB5esqIOsPFdcbVvXpELM/sendMessage?chat_id=1329000291&text="+name+", "+ message , false ); // false for synchronous request
-    xmlHttp.send( null );
-    document.getElementsByName("name")[0].value = "";
-  document.getElementsByName("message")[0].value  = "";
-    alert("thanks to message, we will read this text and respond to you")
-}
+let opCl=!0;const nav=()=>{opCl?(0==swiper.activeIndex&&(document.getElementsByClassName("toolbar")[0].style="height:55px; background:#1c1b1b"),document.getElementById("anim2").style="left: 0px",opCl=!1):(0==swiper.activeIndex&&(document.getElementsByClassName("toolbar")[0].style="opacity:1",document.getElementsByClassName("toolbar")[0].style="height:100px; background:none"),document.getElementById("anim2").style="left: -100%",opCl=!0)},slider=e=>{0==e?swiper.slidePrev():swiper.slideNext()},slide=e=>{0==e?swiper2.slidePrev():swiper2.slideNext()},sendMassage=()=>{let e=document.getElementsByName("name")[0].value,t=document.getElementsByName("message")[0].value;var s=new XMLHttpRequest;s.open("GET","https://api.telegram.org/bot1872875916:AAFZoVul7V-yihUB5esqIOsPFdcbVvXpELM/sendMessage?chat_id=1329000291&text="+e+", "+t,!1),s.send(null),document.getElementsByName("name")[0].value="",document.getElementsByName("message")[0].value="",alert("thanks to message, we will read this text and respond to you")};
 
 
  </script>
