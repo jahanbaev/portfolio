@@ -42,6 +42,7 @@
 <script>
      document.getElementById("names").addEventListener("change", getPage, false);
     function getPage(){
+        document.getElementById("root").innerHTML = "";
         console.log("sssss");
     fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
    for(i=0; i< d.length; i++){
