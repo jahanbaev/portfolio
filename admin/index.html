@@ -26,10 +26,10 @@
     </style>
 </head>
 <body>
-<select name="cars" id="cars">
-  <option value="1">Samandar</option>
-  <option value="2">Muhammad</option>
-  <option value="3">BMW</option>
+<select name="cars" id="names">
+  <option value="Samandarbek">Samandarbek</option>
+  <option value="Xusniddin">Xusniddin</option>
+  <option value="bmw">BMW</option>
 </select>
 <br>
 <div id="root"> 
@@ -39,6 +39,19 @@
 <iframe src="https://djkh.herokuapp.com/api/text/48/" title="W3Schools Free Online Web Tutorials"></iframe>
 </div>
  <input type="text" placeholder="send message">
-
+<script>
+     document.getElementById("names").addEventListener("change", getPage, false);
+    function getPage(){
+        console.log("sssss");
+    fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
+   for(i=0; i< d.length; i++){
+        var para = document.createElement("iframe");
+para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
+document.getElementById("root").appendChild(para);
+   }
+}) 
+    }
+   
+</script>
 </body>
 </html>
