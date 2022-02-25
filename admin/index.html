@@ -33,17 +33,12 @@
 </select>
 <br>
 <div id="root"> 
-<iframe src="https://djkh.herokuapp.com/api/text/48/" title="W3Schools Free Online Web Tutorials"></iframe>
-<iframe src="https://djkh.herokuapp.com/api/text/47/" title="W3Schools Free Online Web Tutorials"></iframe>
-<iframe src="https://djkh.herokuapp.com/api/text/49/" title="W3Schools Free Online Web Tutorials"></iframe>
-<iframe src="https://djkh.herokuapp.com/api/text/48/" title="W3Schools Free Online Web Tutorials"></iframe>
 </div>
  <input type="text" placeholder="send message">
 <script>
      document.getElementById("names").addEventListener("change", getPage, false);
     function getPage(){
         document.getElementById("root").innerHTML = "";
-        console.log("sssss");
     fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
    for(i=0; i< d.length; i++){
         var para = document.createElement("iframe");
@@ -52,7 +47,7 @@ document.getElementById("root").appendChild(para);
    }
 }) 
     }
-   
+    getPage()
 </script>
 </body>
 </html>
