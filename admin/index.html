@@ -51,14 +51,17 @@
 </div>
 
 <script>
+    var count = 0;
      document.getElementById("names").addEventListener("change", getPage, false);
     function getPage(){
+        count = 0;
         document.getElementById("root").innerHTML = "";
     fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
    for(i=0; i< d.length; i++){
         var para = document.createElement("iframe");
 para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
 document.getElementById("root").appendChild(para);
+       count++;
    }
 }) 
     }
@@ -121,6 +124,18 @@ var myName = "";
         // prevent form from submitting
         return false;
     }
+    
+    
+    setInterval(function(){
+    fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
+   for(i=count; i< d.length; i++){
+        var para = document.createElement("iframe");
+para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
+document.getElementById("root").appendChild(para);
+       count++;
+   }
+})
+    },10000)
 </script>
 </body>
 </html>
