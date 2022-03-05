@@ -77,7 +77,7 @@ function includeJs(jsFilePath) {
 
 includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js");
 includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js");
-var myName = prompt("Enter your name");
+var myName = "";
  setTimeout(function(){
 
     // Your web app's Firebase configuration
@@ -116,7 +116,7 @@ var myName = prompt("Enter your name");
             "sender": document.getElementById("names").value,
             "message": message
         });
- 
+        document.getElementById("message").value ="";
         // prevent form from submitting
         return false;
     }
