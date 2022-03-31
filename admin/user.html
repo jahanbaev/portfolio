@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>admin</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        input{
+
+            font-size: 20px;
+        }
+        iframe{
+            height: 90vh;
+            width: 90%;
+            margin-left: 5%;
+        }
+        .flex {
+            display: flex;
+             height: 30px;
+            position: fixed;
+            bottom: 0;
+            padding: 0;
+            left: 37%;
+        }
+        .flex input{
+            width: 85%;
+        }
+        .flex button{
+            width: 15%;
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<select name="cars" id="names">
+  
+  <option value="Samandarbek">Samandarbek</option>
+  <option value="Xusniddin">Xusniddin</option>
+  <option value="Muxammad">Muxammad</option>
+  <option value="Faxriddin">Faxriddin</option> 
+  <option value="Xikmatov">Xikmatov</option>
+  <option value="Begimqulov">Begimqulov</option>
+    
+</select>
+<br>
+<div id="root"> 
+</div>
+<div class="flex">
+ <input type="text" id="message" placeholder="send message"><button onclick="sendMessage()">send</button>
+</div>
+
+<script>
+    var count = 0;
+     document.getElementById("names").addEventListener("change", getPage, false);
+    function getPage(){
+        count = 0;
+        document.getElementById("root").innerHTML = "";
+    fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
+   for(i=0; i< d.length; i++){
+        var para = document.createElement("iframe");
+para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
+document.getElementById("root").appendChild(para);
+       count++;
+   }
+}) 
+    }
+    getPage();
+
+
+
+
+
+function includeJs(jsFilePath) {
+    var js = document.createElement("script");
+    js.type = "text/javascript";
+    js.src = jsFilePath;
+
+    document.body.appendChild(js);
+}
+
+includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js");
+includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js");
+var myName = "";
+ setTimeout(function(){
+
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+    apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
+    authDomain: "testtuit-bf6e1.firebaseapp.com",
+    databaseURL: "https://testtuit-bf6e1-default-rtdb.firebaseio.com/",
+    projectId: "testtuit-bf6e1",
+    storageBucket: "testtuit-bf6e1.appspot.com",
+    messagingSenderId: "64979366642",
+    appId: "1:64979366642:web:bd76a42351df965389566b"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+
+ 
+
+    /*
+    firebase.database().ref("messages").on("child_added", function (snapshot) {
+        if(snapshot.val().sender == document.getElementById("names").value){
+        var html = "";
+        html += snapshot.val().message; 
+        document.getElementById("messages").innerHTML += html;
+    }
+    }) */
+
+  },2000);
+
+    function sendMessage() {
+        // get message
+        var message = document.getElementById("message").value;
+ 
+        // save in database
+        firebase.database().ref("messages").push().set({
+            "sender": document.getElementById("names").value,
+            "message": message
+        });
+        document.getElementById("message").value ="";
+        // prevent form from submitting
+        return false;
+    }
+    
+    
+    setInterval(function(){
+    fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
+   for(i=count-1; i< d.length; i++){
+        var para = document.createElement("iframe");
+para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
+document.getElementById("root").appendChild(para);
+       count++;
+   }
+})
+    },3000)
+</script>
+</body>
+</html>
