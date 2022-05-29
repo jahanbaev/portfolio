@@ -133,7 +133,7 @@ var myName = "";
     
     setInterval(function(){
     fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
-   for(i=count-1; i< d.length; i++){
+   for(i=count; i< d.length; i++){
         var para = document.createElement("iframe");
 para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
 document.getElementById("root").appendChild(para);
