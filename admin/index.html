@@ -90,10 +90,6 @@
                     console.log(this.user)
             fetch("https://djkh.herokuapp.com/api/name/" + globalUser).then(d => d.json()).then(d => {
                     this.list = d
-                    // var para = document.createElement("iframe");
-                    // para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
-                    // document.getElementById("root").appendChild(para);
-                    // this.count++;
             })
         }, 3000);
 
