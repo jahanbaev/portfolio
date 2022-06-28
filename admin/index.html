@@ -23,7 +23,7 @@
     </div>
 
         <div class="flex"> 
-            <input type="text" v-bind="message" id="message" @keyup.enter="sendMessage" placeholder="send message">
+            <input type="text" v-model="message" id="message" @keyup.enter="sendMessage" placeholder="send message">
             <button @click="sendMessage">send</button>
         </div>
 
