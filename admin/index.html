@@ -26,7 +26,8 @@
 </div>
 
         <div class="flex"> 
-            <input type="text" id="message" @keyup.enter="sendMessage" placeholder="send message"><button onclick="sendMessage()">send</button>
+            <input type="text" id="message" @keyup.enter="sendMessage" placeholder="send message">
+            <button @click="sendMessage">send</button>
         </div>
 
     </div>
