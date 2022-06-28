@@ -48,8 +48,7 @@
             },
             watch: {
                 'user': function(val, oldVal){
-                    globalUser = val;
-                   //get chat id from telegram
+                //get chat id from telegram
                 fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
                     for (tgi = 0; tgi < tg.result.length; tgi++) {
                         if (tg.result[tgi].message.text == 'login:' + val) {
@@ -57,6 +56,14 @@
                         }
                     }
                 })
+
+
+                setInterval(function() {
+                   
+                   axios.get("https://djkh.herokuapp.com/api/name/" + val).then(response => {
+                   this.list = response.data
+               })
+               }, 3000);
                 }
             },
 
@@ -87,12 +94,7 @@
                 })
                 console.log(this.user)
 
-                setInterval(function() {
-                   
-                    axios.get("https://djkh.herokuapp.com/api/name/" + globalUser).then(response => {
-                    this.list = response.data
-                })
-                }, 3000);
+               
 
         // web app's Firebase configuration
        /* var firebaseConfig = {
