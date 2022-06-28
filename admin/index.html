@@ -83,7 +83,7 @@
 
             mounted() {
                 setInterval(() => {
-                   axios.get("https://djkh.herokuapp.com/api/name/" + val).then(response => {
+                   axios.get("https://djkh.herokuapp.com/api/name/" + this.user).then(response => {
                    this.list = response.data
                })
               }, 2000);
