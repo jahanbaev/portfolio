@@ -38,6 +38,7 @@ iframe {
 }
 
 #list .list-item {
+    cursor: pointer;
     width: 80%;
     margin: auto;
     left: 0;
@@ -46,4 +47,7 @@ iframe {
     padding: 10px;
     font-size: 22px;
     font-family: Arial, Helvetica, sans-serif;
+}
+#list .list-item:hover{
+    background-color: rgb(143, 202, 168);
 }
