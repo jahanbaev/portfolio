@@ -20,16 +20,16 @@
         <div id="questions">
                 <iframe  v-for="list in list" :src="'https://djkh.herokuapp.com/api/text/'+list"></iframe>
         </div>
-    </div>
-
         <div class="flex"> 
             <input type="text" v-model="message" id="message" @keyup.enter="sendMessage" placeholder="send message">
             <button @click="sendMessage">send</button>
         </div>
+    </div>
+
+      
 
     </div>
     
-    <script src="https://cdn.jsdelivr.net/gh/jahanbaev/node@master/user.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js "></script>
    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
@@ -47,7 +47,7 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        
+
         new Vue({
             el: '#app',
             data: {
@@ -80,7 +80,6 @@
                 sendMessage() {
                   let message = this.message;
                    fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id=' + this.chatId + '&text=' + message).then(d => d.json()).then(tg => {
-                    console.log(tg)
                 })
 
             firebase.database().ref("messages").push().set({
@@ -95,9 +94,11 @@
 
             mounted() {
                 setInterval(() => {
+                    if( this.user != ''){
                    axios.get("https://djkh.herokuapp.com/api/name/" + this.user).then(response => {
                    this.list = response.data
                })
+            }
               }, 2000);
 
                 axios.get('https://qqqw.ru/?users=true').then(response => {
