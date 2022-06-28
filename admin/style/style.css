@@ -41,12 +41,13 @@ iframe {
 #list .list-item {
     cursor: pointer;
     width: 80%;
-    margin: auto;
+    margin: 10px auto;
     left: 0;
     right: 0;
-    border: 2px solid seagreen;
-    padding: 10px;
+    padding: 15px;
     font-size: 22px;
+    box-shadow: 0 0 15px #cbd8d1;
+    border-radius: 12px;
 }
 #list .list-item:hover{
     background-color: rgb(143, 202, 168);
