@@ -10,7 +10,7 @@
 
 <body>
     <div id="app">
-        <div  v-if="user == ''" id="list">
+    <div  v-if="user == ''" id="list">
         <div v-for="item in users">
             <div class="list-item" @click="user = $event.target.innerHTML">{{ item }}</div>
         </div>
@@ -32,8 +32,8 @@
     <script src="https://cdn.jsdelivr.net/gh/jahanbaev/node@master/user.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
+    <!---<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>--->
     <script>
         new Vue({
             el: '#app',
@@ -56,6 +56,7 @@
                 })
                 }
             },
+
             methods: {
                 sendMessage() {
                   let message = dom("#message").value;
@@ -72,6 +73,7 @@
             return false;
                 }
             },
+
             mounted() {
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
@@ -88,7 +90,7 @@
         }, 3000);
 
         // web app's Firebase configuration
-        var firebaseConfig = {
+       /* var firebaseConfig = {
             apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
             authDomain: "testtuit-bf6e1.firebaseapp.com",
             databaseURL: "https://testtuit-bf6e1-default-rtdb.firebaseio.com/",
@@ -98,7 +100,7 @@
             appId: "1:64979366642:web:bd76a42351df965389566b"
         };
         // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);*/
         },
             
         });
