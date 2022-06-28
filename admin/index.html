@@ -41,7 +41,15 @@
             },
             watch: {
                 'user': function(val, oldVal){
-                    alert(val)
+                   //get chat id from telegram
+                fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
+                    for (tgi = 0; tgi < tg.result.length; tgi++) {
+                        if (tg.result[tgi].message.text == 'login:' + val) {
+                            chatId = tg.result[tgi].message.chat.id;
+                            console.log(chatId)
+                        }
+                    }
+                })
                 }
             },
             methods: {
@@ -61,15 +69,7 @@
                 }
             },
             mounted() {
-                //get chat id from telegram
-                fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
-                    for (tgi = 0; tgi < tg.result.length; tgi++) {
-                        if (tg.result[tgi].message.text == 'login:' + document.getElementById("names").value) {
-                            chatId = tg.result[tgi].message.chat.id;
-                            console.log(chatId)
-                        }
-                    }
-                })
+                
 
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
