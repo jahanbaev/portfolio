@@ -72,10 +72,11 @@
             document.getElementById("message").value = "";
             
             return false;
-                }
+            }
             },
 
             mounted() {
+                this.user = this.$refs.user;
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
                 })
