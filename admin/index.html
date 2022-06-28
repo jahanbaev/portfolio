@@ -140,7 +140,8 @@ document.getElementById("root").appendChild(para);
        count++;
    }
 })
-    },3000)
+    },3000);
+    fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d=> d.json()).then(d=>{console.log(d)})
 </script>
 </body>
 </html>
