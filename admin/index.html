@@ -10,11 +10,13 @@
 
 <body>
     <div id="app">
-        <p>{{user}}</p>
-        <div   id="list">
+        <div  v-if="user == ''" id="list">
         <div v-for="item in users">
             <div class="list-item" @click="user = $event.target.innerHTML">{{ item }}</div>
         </div>
+    </div>
+    <div v-else>
+<h1 @click="user=''"><- back</h1>
     </div>
         <div id="root">
         </div>
@@ -32,7 +34,7 @@
             data: {
                 counter: 0,
                 users: [],
-                user: ''
+                user: '',
             },
             methods: {
                 ccounter() {
