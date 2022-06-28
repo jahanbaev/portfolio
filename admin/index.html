@@ -15,11 +15,16 @@
             <div class="list-item" @click="user = $event.target.innerHTML">{{ item }}</div>
         </div>
     </div>
-    <div v-else>
-<h1 @click="user=''" id="back">back</h1>
+    
+    
+    
+<div v-else>
+    <h1 @click="user=''" id="back">< back</h1>
+    <div id="questions">
+            <iframe  v-for="list in list" :src="'https://djkh.herokuapp.com/api/text/'+list">
     </div>
-        <div id="root">
-        </div>
+</div>
+
         <div class="flex"> 
             <input type="text" id="message" @keyup.enter="sendMessage" placeholder="send message"><button onclick="sendMessage()">send</button>
         </div>
@@ -37,7 +42,8 @@
                 count: 0,
                 users: [],
                 user: '',
-                chatId:0
+                chatId:0,
+                list:[]
             },
             watch: {
                 'user': function(val, oldVal){
@@ -45,8 +51,7 @@
                 fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
                     for (tgi = 0; tgi < tg.result.length; tgi++) {
                         if (tg.result[tgi].message.text == 'login:' + val) {
-                            chatId = tg.result[tgi].message.chat.id;
-                            console.log(chatId)
+                            this.chatId = tg.result[tgi].message.chat.id;
                         }
                     }
                 })
@@ -69,20 +74,17 @@
                 }
             },
             mounted() {
-                
-
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
                 })
 
                 setInterval(function() {
-            fetch("https://djkh.herokuapp.com/api/name/" + document.getElementById("names").value).then(d => d.json()).then(d => {
-                for (i = count; i < d.length; i++) {
+            fetch("https://djkh.herokuapp.com/api/name/" + this.user).then(d => d.json()).then(d => {
+                    this.list = d
                     // var para = document.createElement("iframe");
                     // para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
                     // document.getElementById("root").appendChild(para);
-                    // count++;
-                }
+                    // this.count++;
             })
         }, 3000);
 
@@ -98,11 +100,10 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-
-
-
-
-/*
+        },
+            
+        });
+        /*
 firebase.database().ref("messages").on("child_added", function (snapshot) {
     if(snapshot.val().sender == document.getElementById("names").value){
     var html = "";
@@ -110,11 +111,6 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
     document.getElementById("messages").innerHTML += html;
 }
 }) */
-
-            },
-            
-        });
-        
     </script>
     <script>
      
@@ -129,50 +125,13 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
                         count++;
                     }
                 })
-                //get chat id
-            fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
-                    for (tgi = 0; tgi < tg.result.length; tgi++) {
-                        if (tg.result[tgi].message.text == 'login:' + document.getElementById("names").value) {
-                            chatId = tg.result[tgi].message.chat.id;
-                            console.log(chatId)
-                        }
-                    }
-                })
-                ///end tg get chat id
+          
         }
         getPage();
 
 
 
-        var myName = "";
-        setTimeout(function() {
-
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
-                authDomain: "testtuit-bf6e1.firebaseapp.com",
-                databaseURL: "https://testtuit-bf6e1-default-rtdb.firebaseio.com/",
-                projectId: "testtuit-bf6e1",
-                storageBucket: "testtuit-bf6e1.appspot.com",
-                messagingSenderId: "64979366642",
-                appId: "1:64979366642:web:bd76a42351df965389566b"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-
-
-
-
-            /*
-            firebase.database().ref("messages").on("child_added", function (snapshot) {
-                if(snapshot.val().sender == document.getElementById("names").value){
-                var html = "";
-                html += snapshot.val().message; 
-                document.getElementById("messages").innerHTML += html;
-            }
-            }) */
-
-        }, 2000);
+        
 
 
 
