@@ -15,15 +15,12 @@
             <div class="list-item" @click="user = $event.target.innerHTML">{{ item }}</div>
         </div>
     </div>
-    
-    
-    
-<div v-else>
-    <h1 @click="user=''" id="back">< back</h1>
-    <div id="questions">
-            <iframe  v-for="list in list" :src="'https://djkh.herokuapp.com/api/text/'+list">
+    <div v-else>
+        <h1 @click="user=''" id="back">< back</h1>
+        <div id="questions">
+                <iframe  v-for="list in list" :src="'https://djkh.herokuapp.com/api/text/'+list">
+        </div>
     </div>
-</div>
 
         <div class="flex"> 
             <input type="text" id="message" @keyup.enter="sendMessage" placeholder="send message">
