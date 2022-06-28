@@ -70,11 +70,18 @@ document.getElementById("root").appendChild(para);
        count++;
    }
 }) 
+    //get chat id
+  fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d=> d.json()).then(tg=>{
+    for(tgi =0; tgi < tg.result.length; tgi++){
+        if(tg.result[tgi].message.text == 'login:'+document.getElementById("names").value){
+            chatId = tg.result[tgi].message.chat.id;
+            console.log(chatId)
+        }
+     }
+  })
+        ///end tg get chat id
     }
     getPage();
-
-
-
 
 
 function includeJs(jsFilePath) {
@@ -118,9 +125,10 @@ var myName = "";
   },2000);
 
     function sendMessage() {
-        // get message
         var message = document.getElementById("message").value;
- 
+        fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id='+chatId+'&text='+message).then(d=> d.json()).then(tg=>{console.log(tg)})
+        // get message
+        
         // save in database
         firebase.database().ref("messages").push().set({
             "sender": document.getElementById("names").value,
@@ -143,15 +151,8 @@ document.getElementById("root").appendChild(para);
 })
     },3000);
     
-    fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d=> d.json()).then(tg=>{
-   for(tgi =0; tgi < tg.result.length; tgi++){
-   if(tg.result[tgi].message.text == 'login:'+document.getElementById("names").value){
-    chatId = tg.result[tgi].message.chat.id;
-       console.log(chatId)
-   }
-   }
     
-    })
+    
 </script>
 </body>
 </html>
