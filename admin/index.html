@@ -35,11 +35,12 @@
                 counter: 0,
                 users: [],
                 user: '',
+                chatId:0
             },
             methods: {
                 sendMessage() {
                   let message = dom("#message").value;
-                   fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id=' + chatId + '&text=' + message).then(d => d.json()).then(tg => {
+                   fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id=' + this.chatId + '&text=' + message).then(d => d.json()).then(tg => {
                     console.log(tg)
                 })
 
