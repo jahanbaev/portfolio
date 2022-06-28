@@ -36,6 +36,7 @@
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
 
     <script  type="module">
+        import { createApp } from 'vue'
         // web app's Firebase configuration
     var firebaseConfig = {
             apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
@@ -48,8 +49,8 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-      //  import { createApp } from 'vue'
-        export default({
+        
+      createApp({
             data() {
                 return {
                 count: 0,
