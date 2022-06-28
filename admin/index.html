@@ -56,6 +56,17 @@
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
                 })
+
+                setInterval(function() {
+            fetch("https://djkh.herokuapp.com/api/name/" + document.getElementById("names").value).then(d => d.json()).then(d => {
+                for (i = count; i < d.length; i++) {
+                    // var para = document.createElement("iframe");
+                    // para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
+                    // document.getElementById("root").appendChild(para);
+                    // count++;
+                }
+            })
+        }, 3000);
             }
         })
     </script>
@@ -129,34 +140,9 @@
 
         }, 2000);
 
-        function sendMessage() {
-            var message = document.getElementById("message").value;
-            fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id=' + chatId + '&text=' + message).then(d => d.json()).then(tg => {
-                    console.log(tg)
-                })
-                // get message
-
-            // save in database
-            firebase.database().ref("messages").push().set({
-                "sender": document.getElementById("names").value,
-                "message": message
-            });
-            document.getElementById("message").value = "";
-            // prevent form from submitting
-            return false;
-        }
 
 
-        setInterval(function() {
-            fetch("https://djkh.herokuapp.com/api/name/" + document.getElementById("names").value).then(d => d.json()).then(d => {
-                for (i = count; i < d.length; i++) {
-                    var para = document.createElement("iframe");
-                    para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
-                    document.getElementById("root").appendChild(para);
-                    count++;
-                }
-            })
-        }, 3000);
+       
     </script>
 </body>
 
