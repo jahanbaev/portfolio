@@ -25,6 +25,8 @@
         </div>
 
     </div>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jahanbaev/node@master/user.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js "></script>
@@ -32,10 +34,15 @@
         new Vue({
             el: '#app',
             data: {
-                counter: 0,
+                count: 0,
                 users: [],
                 user: '',
                 chatId:0
+            },
+            watch: {
+                'myValue': function(val, oldVal){
+                    alert(val)
+                }
             },
             methods: {
                 sendMessage() {
@@ -54,6 +61,16 @@
                 }
             },
             mounted() {
+                //get chat id from telegram
+                fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
+                    for (tgi = 0; tgi < tg.result.length; tgi++) {
+                        if (tg.result[tgi].message.text == 'login:' + document.getElementById("names").value) {
+                            chatId = tg.result[tgi].message.chat.id;
+                            console.log(chatId)
+                        }
+                    }
+                })
+
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
                 })
@@ -68,14 +85,39 @@
                 }
             })
         }, 3000);
-            }
-        })
+
+        // web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
+            authDomain: "testtuit-bf6e1.firebaseapp.com",
+            databaseURL: "https://testtuit-bf6e1-default-rtdb.firebaseio.com/",
+            projectId: "testtuit-bf6e1",
+            storageBucket: "testtuit-bf6e1.appspot.com",
+            messagingSenderId: "64979366642",
+            appId: "1:64979366642:web:bd76a42351df965389566b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+
+
+
+/*
+firebase.database().ref("messages").on("child_added", function (snapshot) {
+    if(snapshot.val().sender == document.getElementById("names").value){
+    var html = "";
+    html += snapshot.val().message; 
+    document.getElementById("messages").innerHTML += html;
+}
+}) */
+
+            },
+            
+        });
+        
     </script>
     <script>
-        var count = 0;
-        var chatId = 0;
-        //document.getElementById("names").addEventListener("change", getPage, false);
-
+     
         function getPage() {
             count = 0;
             document.getElementById("root").innerHTML = "";
@@ -101,16 +143,7 @@
         getPage();
 
 
-        function includeJs(jsFilePath) {
-            var js = document.createElement("script");
-            js.type = "text/javascript";
-            js.src = jsFilePath;
 
-            document.body.appendChild(js);
-        }
-
-        includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js");
-        includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js");
         var myName = "";
         setTimeout(function() {
 
