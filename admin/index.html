@@ -23,7 +23,7 @@
     </div>
 
         <div class="flex"> 
-            <input type="text" id="message" @keyup.enter="sendMessage" placeholder="send message">
+            <input type="text" v-bind="message" id="message" @keyup.enter="sendMessage" placeholder="send message">
             <button @click="sendMessage">send</button>
         </div>
 
@@ -43,7 +43,8 @@
                 users: [],
                 user: '',
                 chatId:0,
-                list: []
+                list: [],
+                message:''
             },
             watch: {
                 'user': function(val, oldVal){
@@ -65,7 +66,7 @@
                     return this.user;
                 },
                 sendMessage() {
-                  let message = dom("#message").value;
+                  let message = this.message;
                    fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id=' + this.chatId + '&text=' + message).then(d => d.json()).then(tg => {
                     console.log(tg)
                 })
@@ -90,7 +91,6 @@
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
                 })
-                console.log(this.user)
 
                
 
@@ -118,31 +118,7 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
 }
 }) */
     </script>
-    <script>
-     
-        function getPage() {
-            count = 0;
-            document.getElementById("root").innerHTML = "";
-            fetch("https://djkh.herokuapp.com/api/name/" + document.getElementById("names").value).then(d => d.json()).then(d => {
-                    for (i = 0; i < d.length; i++) {
-                        var para = document.createElement("iframe");
-                        para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
-                        document.getElementById("root").appendChild(para);
-                        count++;
-                    }
-                })
-          
-        }
-        //getPage();
-
-
-
-        
-
-
-
-       
-    </script>
+   
 </body>
 
 </html>
