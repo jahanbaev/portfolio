@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    font-size: 20px;
+}
+
+iframe {
+    height: 90vh;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.flex {
+    display: flex;
+    height: 30px;
+    position: fixed;
+    bottom: 0;
+    padding: 0;
+    left: 37%;
+}
+
+.flex input {
+    width: 85%;
+}
+
+.flex button {
+    width: 15%;
+    height: 30px;
+}
