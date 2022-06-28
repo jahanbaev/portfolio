@@ -59,6 +59,9 @@
             },
 
             methods: {
+                getUserId(){
+                    return this.user;
+                },
                 sendMessage() {
                   let message = dom("#message").value;
                    fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id=' + this.chatId + '&text=' + message).then(d => d.json()).then(tg => {
@@ -83,7 +86,7 @@
 
                 setInterval(function() {
                     console.log(this.user)
-            fetch("https://djkh.herokuapp.com/api/name/" + this.user).then(d => d.json()).then(d => {
+            fetch("https://djkh.herokuapp.com/api/name/" + this.getUserId()).then(d => d.json()).then(d => {
                     this.list = d
                     // var para = document.createElement("iframe");
                     // para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
