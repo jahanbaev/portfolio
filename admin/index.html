@@ -88,10 +88,9 @@
 
                 setInterval(function() {
                     console.log(this.user)
-            fetch("https://djkh.herokuapp.com/api/name/" + globalUser).then(d => d.json()).then(d => {
-                    this.list = d
-                    console.log(d)
-            })
+                    axios.get("https://djkh.herokuapp.com/api/name/" + globalUser).then(response => {
+                    this.list = response.data
+                })
         }, 3000);
 
         // web app's Firebase configuration
