@@ -71,11 +71,11 @@
                     console.log(tg)
                 })
 
-            /*firebase.database().ref("messages").push().set({
-                "sender": document.getElementById("names").value,
-                "message": message
+            firebase.database().ref("messages").push().set({
+                "sender": this.user,
+                "message": this.message
             });
-            */
+           
             this.message = '';
             return false;
             }
