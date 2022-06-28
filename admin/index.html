@@ -90,6 +90,7 @@
                     console.log(this.user)
             fetch("https://djkh.herokuapp.com/api/name/" + globalUser).then(d => d.json()).then(d => {
                     this.list = d
+                    console.log(d)
             })
         }, 3000);
 
