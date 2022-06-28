@@ -1,159 +1,180 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>admin</title>
     <style type="text/css">
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        input{
-
+        
+        input {
             font-size: 20px;
         }
-        iframe{
+        
+        iframe {
             height: 90vh;
             width: 90%;
             margin-left: 5%;
         }
+        
         .flex {
             display: flex;
-             height: 30px;
+            height: 30px;
             position: fixed;
             bottom: 0;
             padding: 0;
             left: 37%;
         }
-        .flex input{
+        
+        .flex input {
             width: 85%;
         }
-        .flex button{
+        
+        .flex button {
             width: 15%;
             height: 30px;
         }
-
     </style>
 </head>
+
 <body>
-<select name="cars" id="names">
-  
-  <option value="Samandarbek">Samandarbek</option>
-  <option value="Xusniddin">Xusniddin</option>
-  <option value="Muxammad">Muxammad</option>
-  <option value="Faxriddin">Faxriddin</option> 
-  <option value="Xikmatov">Xikmatov</option>
-  <option value="Begimqulov">Begimqulov</option>
-   <option value="Saydiabzal">Saydiabzal</option>
-    
-</select>
-<br>
-<div id="root"> 
-</div>
-<div class="flex">
- <input type="text" id="message" placeholder="send message"><button onclick="sendMessage()">send</button>
-</div>
+    <div id="app">
+        <li v-for="item in users">
+            {{ item }}
+          </li>
+          
+            <div id="root">
+            </div>
+            <div class="flex">
+                <input type="text" id="message" placeholder="send message"><button onclick="sendMessage()">send</button>
+            </div>
 
-<script>
-    var count = 0;
-    var chatId = 0;
-     document.getElementById("names").addEventListener("change", getPage, false);
-    function getPage(){
-        count = 0;
-        document.getElementById("root").innerHTML = "";
-    fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
-   for(i=0; i< d.length; i++){
-        var para = document.createElement("iframe");
-para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
-document.getElementById("root").appendChild(para);
-       count++;
-   }
-}) 
-    //get chat id
-  fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d=> d.json()).then(tg=>{
-    for(tgi =0; tgi < tg.result.length; tgi++){
-        if(tg.result[tgi].message.text == 'login:'+document.getElementById("names").value){
-            chatId = tg.result[tgi].message.chat.id;
-            console.log(chatId)
-        }
-     }
-  })
-        ///end tg get chat id
-    }
-    getPage();
+        </div>
+        <script src="https://cdn.jsdelivr.net/gh/jahanbaev/node@master/user.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js "></script>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    counter: 0,
+                    users: []
+                },
+                methods: {
+                    ccounter() {
+                        this.counter++
+                    }
+                },
+                mounted() {
+                    axios.get('https://qqqw.ru/users.txt').then(response => {
+                        this.users = response.data
+                    })
+                }
+            })
+        </script>
+        <script>
+            var count = 0;
+            var chatId = 0;
+            document.getElementById("names").addEventListener("change", getPage, false);
+
+            function getPage() {
+                count = 0;
+                document.getElementById("root").innerHTML = "";
+                fetch("https://djkh.herokuapp.com/api/name/" + document.getElementById("names").value).then(d => d.json()).then(d => {
+                        for (i = 0; i < d.length; i++) {
+                            var para = document.createElement("iframe");
+                            para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
+                            document.getElementById("root").appendChild(para);
+                            count++;
+                        }
+                    })
+                    //get chat id
+                fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
+                        for (tgi = 0; tgi < tg.result.length; tgi++) {
+                            if (tg.result[tgi].message.text == 'login:' + document.getElementById("names").value) {
+                                chatId = tg.result[tgi].message.chat.id;
+                                console.log(chatId)
+                            }
+                        }
+                    })
+                    ///end tg get chat id
+            }
+            getPage();
 
 
-function includeJs(jsFilePath) {
-    var js = document.createElement("script");
-    js.type = "text/javascript";
-    js.src = jsFilePath;
+            function includeJs(jsFilePath) {
+                var js = document.createElement("script");
+                js.type = "text/javascript";
+                js.src = jsFilePath;
 
-    document.body.appendChild(js);
-}
+                document.body.appendChild(js);
+            }
 
-includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js");
-includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js");
-var myName = "";
- setTimeout(function(){
+            includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js");
+            includeJs("https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js");
+            var myName = "";
+            setTimeout(function() {
 
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-    apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
-    authDomain: "testtuit-bf6e1.firebaseapp.com",
-    databaseURL: "https://testtuit-bf6e1-default-rtdb.firebaseio.com/",
-    projectId: "testtuit-bf6e1",
-    storageBucket: "testtuit-bf6e1.appspot.com",
-    messagingSenderId: "64979366642",
-    appId: "1:64979366642:web:bd76a42351df965389566b"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    
+                // Your web app's Firebase configuration
+                var firebaseConfig = {
+                    apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
+                    authDomain: "testtuit-bf6e1.firebaseapp.com",
+                    databaseURL: "https://testtuit-bf6e1-default-rtdb.firebaseio.com/",
+                    projectId: "testtuit-bf6e1",
+                    storageBucket: "testtuit-bf6e1.appspot.com",
+                    messagingSenderId: "64979366642",
+                    appId: "1:64979366642:web:bd76a42351df965389566b"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
 
- 
 
-    /*
-    firebase.database().ref("messages").on("child_added", function (snapshot) {
-        if(snapshot.val().sender == document.getElementById("names").value){
-        var html = "";
-        html += snapshot.val().message; 
-        document.getElementById("messages").innerHTML += html;
-    }
-    }) */
 
-  },2000);
 
-    function sendMessage() {
-        var message = document.getElementById("message").value;
-        fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id='+chatId+'&text='+message).then(d=> d.json()).then(tg=>{console.log(tg)})
-        // get message
-        
-        // save in database
-        firebase.database().ref("messages").push().set({
-            "sender": document.getElementById("names").value,
-            "message": message
-        });
-        document.getElementById("message").value ="";
-        // prevent form from submitting
-        return false;
-    }
-    
-    
-    setInterval(function(){
-    fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
-   for(i=count; i< d.length; i++){
-        var para = document.createElement("iframe");
-para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
-document.getElementById("root").appendChild(para);
-       count++;
-   }
-})
-    },3000);
-    
-    
-    
-</script>
+                /*
+                firebase.database().ref("messages").on("child_added", function (snapshot) {
+                    if(snapshot.val().sender == document.getElementById("names").value){
+                    var html = "";
+                    html += snapshot.val().message; 
+                    document.getElementById("messages").innerHTML += html;
+                }
+                }) */
+
+            }, 2000);
+
+            function sendMessage() {
+                var message = document.getElementById("message").value;
+                fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id=' + chatId + '&text=' + message).then(d => d.json()).then(tg => {
+                        console.log(tg)
+                    })
+                    // get message
+
+                // save in database
+                firebase.database().ref("messages").push().set({
+                    "sender": document.getElementById("names").value,
+                    "message": message
+                });
+                document.getElementById("message").value = "";
+                // prevent form from submitting
+                return false;
+            }
+
+
+            setInterval(function() {
+                fetch("https://djkh.herokuapp.com/api/name/" + document.getElementById("names").value).then(d => d.json()).then(d => {
+                    for (i = count; i < d.length; i++) {
+                        var para = document.createElement("iframe");
+                        para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
+                        document.getElementById("root").appendChild(para);
+                        count++;
+                    }
+                })
+            }, 3000);
+        </script>
 </body>
-</html>
 
+</html>
