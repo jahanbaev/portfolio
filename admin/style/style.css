@@ -46,7 +46,7 @@ iframe {
     right: 0;
     padding: 15px;
     font-size: 22px;
-    box-shadow: 0 0 15px #cbd8d1;
+    box-shadow: 0 0 20px #eeeeee;
     border-radius: 12px;
 }
 #list .list-item:hover{
