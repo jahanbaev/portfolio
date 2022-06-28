@@ -35,7 +35,19 @@
    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
     <script>
-        let globalUser = 0;
+        // web app's Firebase configuration
+    var firebaseConfig = {
+            apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
+            authDomain: "testtuit-bf6e1.firebaseapp.com",
+            databaseURL: "https://testtuit-bf6e1-default-rtdb.firebaseio.com/",
+            projectId: "testtuit-bf6e1",
+            storageBucket: "testtuit-bf6e1.appspot.com",
+            messagingSenderId: "64979366642",
+            appId: "1:64979366642:web:bd76a42351df965389566b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
         new Vue({
             el: '#app',
             data: {
@@ -94,18 +106,7 @@
 
                
 
-        // web app's Firebase configuration
-    var firebaseConfig = {
-            apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
-            authDomain: "testtuit-bf6e1.firebaseapp.com",
-            databaseURL: "https://testtuit-bf6e1-default-rtdb.firebaseio.com/",
-            projectId: "testtuit-bf6e1",
-            storageBucket: "testtuit-bf6e1.appspot.com",
-            messagingSenderId: "64979366642",
-            appId: "1:64979366642:web:bd76a42351df965389566b"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);*/
+        
         },
             
         });
