@@ -10,7 +10,8 @@
 
 <body>
     <div id="app">
-        <div v-for="item in users">
+        <p>{{user}}</p>
+        <div id="list" v-for="item in users">
             <div class="list-item" @click="user = $event.target.innerHTML">{{ item }}</div>
         </div>
 
