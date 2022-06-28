@@ -56,4 +56,6 @@ iframe {
     width: 100px;
     height: 45px;
     color: seagreen;
+    text-align: center;
+    cursor: pointer;
 }
