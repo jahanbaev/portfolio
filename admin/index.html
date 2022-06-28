@@ -82,6 +82,7 @@
                 })
 
                 setInterval(function() {
+                    console.log(this.user)
             fetch("https://djkh.herokuapp.com/api/name/" + this.user).then(d => d.json()).then(d => {
                     this.list = d
                     // var para = document.createElement("iframe");
