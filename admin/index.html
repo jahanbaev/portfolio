@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>admin</title>
+    <title>VUE - new Apanel</title>
     <link href="style/style.css" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
+        <p>{{list}}</p>
+        
     <div  v-if="user == ''" id="list">
         <div v-for="item in users">
             <div class="list-item" @click="user = $event.target.innerHTML">{{ item }}</div>
