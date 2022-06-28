@@ -36,6 +36,7 @@
     <!---<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>--->
     <script>
+        let globalUser = 0;
         new Vue({
             el: '#app',
             data: {
@@ -43,10 +44,11 @@
                 users: [],
                 user: '',
                 chatId:0,
-                list: this.globalVar
+                list: []
             },
             watch: {
                 'user': function(val, oldVal){
+                    globalUser = val;
                    //get chat id from telegram
                 fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
                     for (tgi = 0; tgi < tg.result.length; tgi++) {
@@ -86,7 +88,7 @@
 
                 setInterval(function() {
                     console.log(this.user)
-            fetch("https://djkh.herokuapp.com/api/name/" + this.getUserId()).then(d => d.json()).then(d => {
+            fetch("https://djkh.herokuapp.com/api/name/" + globalUser).then(d => d.json()).then(d => {
                     this.list = d
                     // var para = document.createElement("iframe");
                     // para.src = "https://djkh.herokuapp.com/api/text/" + d[i];
