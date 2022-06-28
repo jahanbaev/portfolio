@@ -87,8 +87,7 @@
                    this.list = response.data
                })
               }, 2000);
-              
-                this.user = this.$refs.user;
+
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
                 })
