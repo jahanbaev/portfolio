@@ -34,7 +34,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js "></script>
    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
-    <script>
+    <script  type="module">
         // web app's Firebase configuration
     var firebaseConfig = {
             apiKey: "AIzaSyB8bgaNb1XaxqjCz7NwMmISSK5DdDeHMwU",
@@ -47,16 +47,17 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-
-        new Vue({
-            el: '#app',
-            data: {
+        import { createApp } from 'vue'
+        createApp({
+            data() {
+                return {
                 count: 0,
                 users: [],
                 user: '',
                 chatId:0,
                 list: [],
                 message:''
+            }
             },
             watch: {
                 'user': function(val, oldVal){
@@ -110,7 +111,7 @@
         
         },
             
-        });
+        }).mount('#app');
         /*
 firebase.database().ref("messages").on("child_added", function (snapshot) {
     if(snapshot.val().sender == document.getElementById("names").value){
