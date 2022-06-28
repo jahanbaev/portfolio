@@ -56,9 +56,11 @@
                         }
                     }
                 })
+                setInterval(() => {
                    axios.get("https://djkh.herokuapp.com/api/name/" + val).then(response => {
                    this.list = response.data
                })
+              }, 2000);
                
                 }
             },
