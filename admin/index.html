@@ -85,13 +85,14 @@
                 axios.get('https://qqqw.ru/?users=true').then(response => {
                     this.users = response.data
                 })
+                console.log(this.user)
 
                 setInterval(function() {
-                    console.log(this.user)
+                   
                     axios.get("https://djkh.herokuapp.com/api/name/" + globalUser).then(response => {
                     this.list = response.data
                 })
-        }, 3000);
+                }, 3000);
 
         // web app's Firebase configuration
        /* var firebaseConfig = {
