@@ -11,10 +11,11 @@
 <body>
     <div id="app">
         <p>{{user}}</p>
-        <div id="list" v-for="item in users">
+        <div   id="list">
+        <div v-for="item in users">
             <div class="list-item" @click="user = $event.target.innerHTML">{{ item }}</div>
         </div>
-
+    </div>
         <div id="root">
         </div>
         <div class="flex">
