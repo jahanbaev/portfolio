@@ -21,7 +21,7 @@
         <div id="root">
         </div>
         <div class="flex"> 
-            <input type="text" id="message" placeholder="send message"><button onclick="sendMessage()">send</button>
+            <input type="text" id="message" @keyup.enter="sendMessage" placeholder="send message"><button onclick="sendMessage()">send</button>
         </div>
 
     </div>
@@ -37,8 +37,19 @@
                 user: '',
             },
             methods: {
-                ccounter() {
-                    this.counter++
+                sendMessage() {
+                  let message = dom("#message").value;
+                   fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/sendMessage?chat_id=' + chatId + '&text=' + message).then(d => d.json()).then(tg => {
+                    console.log(tg)
+                })
+
+            firebase.database().ref("messages").push().set({
+                "sender": document.getElementById("names").value,
+                "message": message
+            });
+            document.getElementById("message").value = "";
+            
+            return false;
                 }
             },
             mounted() {
