@@ -65,7 +65,7 @@
                     for (tgi = 0; tgi < tg.result.length; tgi++) {
                         if (tg.result[tgi].message.text.toLowerCase().replace(/ /g, '') == 'login:' + val.toLowerCase()) {
                             this.chatId = tg.result[tgi].message.chat.id;
-                            consolelog(this.chatId)
+                            console.log(this.chatId)
                         }
                     }
                 })               
@@ -87,7 +87,7 @@
             });
            
             this.message = '';
-            consolelog(this.chatId)
+            console.log(this.chatId)
             return false;
             }
             },
