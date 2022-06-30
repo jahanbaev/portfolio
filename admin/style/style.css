@@ -20,16 +20,28 @@ iframe {
     position: fixed;
     bottom: 0;
     padding: 0;
-    left: 37%;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .flex input {
-    width: 85%;
+    width: 180px;
+     border:seagreen 2px solid;
+    color:#000;
+    height:30px;
+    padding:5px;
+    box-sizing:border-box
 }
 
+
 .flex button {
-    width: 15%;
+    width: 50px;
     height: 30px;
+    background:#fff;
+    border:seagreen 2px solid;
+    color:seagreen;
 }
 
 #list {
@@ -54,7 +66,7 @@ iframe {
 }
 #back{
     border: 2px solid seagreen;
-    height: 45px;
+    height: 38px;
     width: 150px;
     color: seagreen;
     text-align: center;
