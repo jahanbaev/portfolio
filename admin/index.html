@@ -63,13 +63,12 @@
                 //get chat id from telegram
                 fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
                     for (tgi = 0; tgi < tg.result.length; tgi++) {
-                        if (tg.result[tgi].message.text.toLowerCase().replace(/ /g, '') == 'login:' + val.toLowerCase() ) {
+                        if (tg.result[tgi].message.text.toLowerCase().replace(/ /g, '') == 'login:' + val.toLowerCase()) {
                             this.chatId = tg.result[tgi].message.chat.id;
+                            consolelog(this.chatId)
                         }
                     }
-                })
-                
-               
+                })               
                 }
             },
 
@@ -88,6 +87,7 @@
             });
            
             this.message = '';
+            consolelog(this.chatId)
             return false;
             }
             },
