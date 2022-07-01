@@ -73,10 +73,3 @@ iframe {
     text-align: center;
     cursor: pointer;
 }
-
-.blocker{
-    position: fixed;
-    z-index: 9;
-    height: 90vh;
-    width: 100%;
-}
