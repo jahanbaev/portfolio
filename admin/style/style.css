@@ -24,6 +24,7 @@ iframe {
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 10;
 }
 
 .flex input {
@@ -71,4 +72,11 @@ iframe {
     color: seagreen;
     text-align: center;
     cursor: pointer;
+}
+
+.blocker{
+    position: fixed;
+    z-index: 9;
+    height: 90vh;
+    width: 100%;
 }
