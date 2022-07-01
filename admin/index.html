@@ -107,10 +107,9 @@
                     this.users = response.data
                 })
 
-                firebase.database().ref("messages").on("child_added", function (snapshot) {
+    firebase.database().ref("messages").on("child_added", function (snapshot) {
     if(snapshot.val().sender == this.user){
-    var html = "";
-    //html += snapshot.val().message; 
+    var html = ""; 
     console.log(snapshot.val().message)
     //document.getElementById("messages").innerHTML += html;
 }
