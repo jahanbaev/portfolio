@@ -107,20 +107,21 @@
                     this.users = response.data
                 })
 
-               
+                firebase.database().ref("messages").on("child_added", function (snapshot) {
+    if(snapshot.val().sender == this.user){
+    var html = "";
+    //html += snapshot.val().message; 
+    console.log(snapshot.val().message)
+    //document.getElementById("messages").innerHTML += html;
+}
+}) 
 
         
         },
             
         });
-        /*
-firebase.database().ref("messages").on("child_added", function (snapshot) {
-    if(snapshot.val().sender == document.getElementById("names").value){
-    var html = "";
-    html += snapshot.val().message; 
-    document.getElementById("messages").innerHTML += html;
-}
-}) */
+    
+
 
 
     </script>
