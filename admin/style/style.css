@@ -9,7 +9,7 @@ input {
 }
 
 iframe {
-    height: 90vh;
+    height: auto;
     width: 90%;
     margin-left: 5%;
 }
