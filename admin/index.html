@@ -64,13 +64,11 @@
                 this.chatId = 0;
 
                 //get chat id from telegram
-                fetch('https://api.telegram.org/bot5303939042:AAGaYq_Snchx1v4UoBA7gOtBclOqVBavpSw/getUpdates').then(d => d.json()).then(tg => {
-                    for (tgi = 0; tgi < tg.result.length; tgi++) {
-                        if (tg.result[tgi].message.text.toLowerCase().replace(/ /g, '') == 'login:' + val.toLowerCase()) {
-                            this.chatId = tg.result[tgi].message.chat.id;
-                        }
-                    }
-                })               
+                let tgUsers =[{name:'Dostonbek',chatId: '417968605'},
+                {name:'Samandarbek',chatId: '1329000291'},
+                {name:'Madinabonu',chatId:'1331438097'},
+                {name:'Madinabonu',chatId:'1331438097'}];
+                //dwa
                 }
             },
 
@@ -119,10 +117,21 @@
         },
             
         });
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     
+=======
+    
+>>>>>>> 6473323e65d4f4de0a8b7a4a722db88cafa5d64c
 
 
+<<<<<<< HEAD
 
+>>>>>>> 6473323e65d4f4de0a8b7a4a722db88cafa5d64c
+=======
+
+>>>>>>> 6473323e65d4f4de0a8b7a4a722db88cafa5d64c
     </script>
    
 </body>
