@@ -68,7 +68,12 @@
                 {name:'Samandarbek',chatId: '1329000291'},
                 {name:'Madinabonu',chatId:'1331438097'},
                 {name:'Madinabonu',chatId:'1331438097'}];
-                //dwa
+                 
+                for(i =0; i < tgUsers.length; i++){
+                    if(tgUsers[i].name == this.user){
+                        this.chatId = tgUsers[i].chatId;
+                    }
+                }
                 }
             },
 
