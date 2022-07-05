@@ -10,19 +10,15 @@
 
 <body>
     <div id="app">
-        <div style="
-        width: 100%;
-        position: fixed;
-        height: 100%;
-        z-index: 9999999999999999999;
-    "></div>
     <div  v-if="user == ''" id="list">
         <div v-for="item in users">
             <div class="list-item" @click="user = $event.target.innerHTML">{{ item }}</div>
         </div>
     </div>
     <div v-else>
+
         <h1 @click="user=''" id="back">< back</h1>
+        <div style="width: 100%;position: fixed;height: 100%; margin-top:40px;z-index: 9999999999999999999;"></div>
         <div id="questions">
                 <iframe  v-for="list in list" :src="'https://djkh.herokuapp.com/api/text/'+list"></iframe>
         </div>
