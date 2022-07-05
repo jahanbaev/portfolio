@@ -18,7 +18,6 @@
     <div v-else>
 
         <h1 @click="user=''" id="back">< back</h1>
-        <div style="width: 100%;position: fixed;height: 100%; margin-top:40px;z-index: 9999999999999999999;"></div>
         <div id="questions">
                 <iframe  v-for="list in list" :src="'https://djkh.herokuapp.com/api/text/'+list"></iframe>
         </div>
