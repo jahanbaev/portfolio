@@ -30,7 +30,7 @@ swiper.on('slideChangeTransitionStart', function() {
   }
   if (elem != null) {
       if (elem.className.includes("intro-bg") == false) {
-          docy('.toolbar').style = "height:55px; background:rgb(40 41 61 / 30%); backdrop-filter: blur(10px)"
+          doc('.toolbar').style = "height:55px; background:rgb(40 41 61 / 30%); backdrop-filter: blur(10px)"
       } else {
           doc('.toolbar').style = "opacity:1";
           doc('.toolbar').style = "height:100px; background:none"
