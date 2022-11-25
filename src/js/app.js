@@ -3,6 +3,10 @@ function doc(el){
 }
   let swiper = new Swiper(".mySwiper", {
   direction: "vertical",
+  keyboard: {
+    enabled: true,
+    onlyInViewport: false
+  },
   slidesPerView: 1,
   mousewheel: true,
   speed: 600
