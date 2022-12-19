@@ -60,10 +60,10 @@
     function getPage(){
         count = 0;
         document.getElementById("root").innerHTML = "";
-    fetch("https://djkh.herokuapp.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
+    fetch("https://jkha.pythonanywhere.com/api/name/"+document.getElementById("names").value).then(d=>d.json()).then(d=>{
    for(i=0; i< d.length; i++){
         var para = document.createElement("iframe");
-para.src = "https://djkh.herokuapp.com/api/text/"+d[i];
+para.src = "https://jkha.pythonanywhere.com/api/text/"+d[i];
 document.getElementById("root").appendChild(para);
        count++;
    }
